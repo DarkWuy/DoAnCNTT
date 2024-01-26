@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+}
+
+.container {
+    display: flex;
+    margin-top: 70px;
+}
+
+.left-column {
+    width: 20%; 
+    background-color: rgb(226, 214, 199);
+    position: fixed;
+    height: 100vh; 
+    overflow: auto;
+    border-right: 2px solid #ccc;
+}
+
+.right-column-tracnghiem,
+.right-column-nghe,
+.right-column-viet{
+    margin-top: 0px;
+    flex: 60%; 
+    overflow: auto;
+    margin-left: 22%;
+    margin-right: 3%;
+    
+}

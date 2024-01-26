@@ -1,0 +1,50 @@
+
+html, body {
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+}
+
+.khung{
+    background-color: rgb(198, 124, 34);
+    overflow: hidden;
+    position: fixed;
+    z-index: 3;
+    width: 100vw;
+    opacity: 0.9;
+    top:0;
+}
+.khung ul{
+    text-align: center;
+}
+
+.khung li {
+    color: white;
+    display: inline-block;
+    padding: 8px 16px;
+    list-style-type: none;
+   
+}
+
+.khung li a{
+    color: white;
+    text-decoration: none;
+    position:  relative;
+}
+.logo{
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    left: 7%;
+    font-size: larger;
+    top: 25%;
+}
+.khung li a:hover{
+    font-weight: bold;
+    opacity: 1;
+}
+.khung li img:hover{
+    cursor: pointer;
+    opacity: 0.4;
+
+}

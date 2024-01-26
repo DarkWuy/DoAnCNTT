@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet"  href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/menu.css">
+
+    <style>
+        table {
+            float: left;
+        }
+        th {
+            width: 30%;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body >
+    <!-- Khung menu -->
+   <%- include('menu') %>
+    <!-- -------------------------------------------------------- -->
+    <div id="Home" >
+            <img class="Imagehome"  src="/anh/4.jpg" alt="anh nen" />
+            <!-- <img  style="image-rendering: pixelated; float: right;"  width="50%" height="50%" src="/anh/5.jpg" alt="anh nen" /> -->
+            <h1 style="text-align: center;">Bạn đã đến với WEB học anh văn chuyên ngành Công nghệ thông tin</h1>
+            <hr>
+                    <div class="Home-Main">
+                        <div class="Home-Main-Left">
+                            <table style="float: left;" border="0">
+                                <tr>
+                                    <th >
+                                        <img src="/anh/5.jpg" style="width: 100%; float: left;" alt="Hình ảnh">
+                                    </th>
+                                    <th> 
+                                        <img src="/anh/6.jpg" style="width: 100%; float: left;" alt="Hình ảnh">
+                                    </th>  
+                                </tr>
+                                <tr>
+                                    <th><a href="#">Tham gia khóa học</a> </th>
+                                    <th><a href="/gioithieuchude">Giới thiệu các chủ đề</a></th>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                        <div class="Home-Main-Right">
+                          
+                                <table style="float: left;" border="0">
+                                    <tr>
+                                        <th >
+                                            <img src="/anh/7.jpg" style="width: 100%; float: left;" alt="Hình ảnh">
+                                        </th>
+                                        <th> 
+                                            <img src="/anh/8.jpg" style="width: 100%; float: left;" alt="Hình ảnh">
+                                        </th>
+                                        
+                                    </tr>
+    
+                                    <tr>
+                                        <th><a href="http://fit.vlute.edu.vn/">Tìm hiểu về công nghệ thông tin</a> </th>
+                                        <th><a href="#">Các tài liệu tham khảo</a></th>
+                                    </tr>
+                                </table>
+                            </div>
+                    </div>
+            <br>
+            <div class="last">
+                <div class="content">
+                    <h1>Làm bài TEST thử</h1>
+                    <button  onclick="window.location.href='/trangkiemtra'"  type="submit">Làm ngay</button>
+                </div>
+                <div class="additional-content">
+                    <h1>Học thử chủ đề</h1>
+                    <button onclick="window.location.href='/baihoc1'"  type="submit">Học thử ngay</button>
+                </div> 
+            </div>
+           
+            <div class="thanh-cuoi"> </div>
+
+            <div><h1 style="text-align: center;">Tham gia học anh văn ngay bây giờ ?</h1></div>
+     
+            <div class="login-register">
+               
+                <% if (!isLoggedIn) { %>
+                    <div>
+                        <button onclick="window.location.href='/dangnhap'" type="submit">ĐĂNG NHẬP</button>
+                    </div>
+                   
+                <div>
+                    <h2>Bạn chưa có tài khoản?</h2>
+                    <a href='/dangky'>Đăng ký ngay</a>
+                </div>
+            </div>
+            <% } %>
+              
+            <div class="thanhle"></div>
+
+            <div class="footer-bar">
+                <div class="address-info">
+                    <h2 style="font-weight: bold;"> TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT VĨNH LONG</h2>
+                    <p> Địa chỉ: 73 Nguyễn Huệ, phường 2, thành phố Vĩnh Long, tỉnh Vĩnh Long <br>
+                        Điện thoại: (+84) 02703.822141 - Fax: (+84) 02703.821003 - Email: spktvl@vlute.edu.vn</p>
+                </div>
+                <div style="padding-top: 30px;" class="icon">
+                        <img width="50px" src="/anh/fb.jpg" alt="ảnh zalo">
+                        <img width="50px" src="/anh/mail.jpg" alt="ảnh zalo">
+                        <img width="50px" src="/anh/ita.jpg" alt="ảnh zalo">
+                </div>
+                
+                <div class="human-info" style="font-weight: bold;">
+                    <p> Người thực hiện: Huỳnh Đức Huy <br>
+                        Email: 21004182@st.vlute.edu.vn</p>
+                </div>
+            </div> 
+    </div>
+        <script src="/js/main.js">
+
+</script>
+</body>
+</html>

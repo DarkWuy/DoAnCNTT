@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/trangbaihoc.css">
+    <title>Trang bài học</title>
+    
+</head>
+<body>
+    <%- include('menu') %>
+    <div class="container">
+        <div class="left-column">
+            <%- include('TrangBaiHoc/TrangLe') %>
+        </div>
+        <div id="Unit1" class="right-column-Unit1" style="display: block;">
+            <%- include('TrangBaiHoc/Unit1') %>
+        </div>
+        <div id="Unit2"  class="right-column-Unit2"  style="display: none;">
+            <%- include('TrangBaiHoc/Unit2') %>
+        </div>
+        <div id="Unit3"  class="right-column-Unit3"  style="display: none;">
+            <%- include('TrangBaiHoc/Unit3') %>
+        </div>
+        <div id="Unit4"  class="right-column-Unit4"  style="display: none;">
+            <%- include('TrangBaiHoc/Unit4') %>
+        </div>
+       
+
+    </div>
+    <script>
+          function unit1(){
+               document.getElementById("Unit1").style.display="block";
+               document.getElementById("Unit2").style.display="none";
+               document.getElementById("Unit3").style.display="none";
+               document.getElementById("Unit4").style.display="none";
+          }
+          function unit2(){
+               document.getElementById("Unit2").style.display="block";
+               document.getElementById("Unit3").style.display="none";
+               document.getElementById("Unit4").style.display="none";
+               document.getElementById("Unit1").style.display="none";
+          }
+          function unit3(){
+               document.getElementById("Unit3").style.display="block";
+               document.getElementById("Unit4").style.display="none";
+               document.getElementById("Unit1").style.display="none";
+               document.getElementById("Unit2").style.display="none";
+          }
+          function unit4(){
+               document.getElementById("Unit4").style.display="block";
+               document.getElementById("Unit3").style.display="none";
+               document.getElementById("Unit2").style.display="none";
+               document.getElementById("Unit1").style.display="none";
+          }
+
+
+    </script>
+</body>
+</html>

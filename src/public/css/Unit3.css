@@ -1,0 +1,32 @@
+h1{
+    text-align: center;
+}
+
+.tuvung{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+p{
+    display: block;
+    padding-top: 20px;
+    line-height: 2;
+}
+hr{
+    border: 2px solid green;
+}
+table
+{
+    text-align: left;
+  
+}
+li{
+    font-weight: normal;
+    padding-top: 20px;
+}
+.baihoc{
+    padding-bottom: 50px;
+}
+
+
+

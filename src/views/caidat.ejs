@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+      .html{
+         background-color: #eee;
+      }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            padding-top: 10%;
+        }
+
+        .profile {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-bottom: 60px;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .email {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .info {
+            margin-top: 20px;
+          
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 10px;
+            padding-top: 20px;
+        }
+
+        .info-label {
+            width: 150px;
+            font-weight: bold;
+        }
+
+        .info-value {
+            flex: 1;
+        }
+
+        .logout {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background-color: rgb(226, 214, 199);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .footer-bar {
+    background-color: rgb(237, 231, 223); 
+    color: black; 
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    display: flex; 
+    justify-content: space-between; 
+    height: 120px;
+    position: fixed;
+    padding-left: 26px;
+    padding-right: 26px;
+} 
+h1{
+    margin-top: 5%;
+}
+.logout:hover{
+
+    background-color: #45a049;
+
+
+}
+
+    </style>
+</head>
+<body>
+    <%- include('menu') %>
+    <div class="container">
+        <div class="profile">
+            <img src="/anh/tk.jpg" alt="Avatar" class="avatar">
+            <div class="details">
+                <div class="name"><%= hoten %></div>
+                <div class="email"><%= email %></div>
+            </div>
+        </div>
+        <div class="info">
+            <div class="info-item">
+                <div class="info-label">Số điện thoại:</div>
+                <div class="info-value"><%= sodienthoai %></div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Địa chỉ:</div>
+                <div class="info-value"><%= diachi %></div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Ngày sinh:</div>
+                <div class="info-value"><%= ngaysinh %></div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Giới tính:</div>
+                <div class="info-value"><%= gioitinh %></div>
+            </div>
+        </div>
+        <a href="/dangxuat" class="logout">Đăng xuất</a>
+    </div>
+    
+    <div class="footer-bar">
+        <div class="address-info">
+            <h2 style="font-weight: bold;"> TRƯỜNG ĐẠI HỌC SƯ PHẠM KỸ THUẬT VĨNH LONG</h2>
+            <p> Địa chỉ: 73 Nguyễn Huệ, phường 2, thành phố Vĩnh Long, tỉnh Vĩnh Long <br>
+                Điện thoại: (+84) 02703.822141 - Fax: (+84) 02703.821003 - Email: spktvl@vlute.edu.vn</p>
+        </div>
+        
+        <div class="human-info" style="font-weight: bold;">
+            <p> Người thực hiện: Huỳnh Đức Huy <br>
+                Email: 21004182@st.vlute.edu.vn</p>
+        </div>
+    </div> 
+</body>
+
+<script>
+
+
+
+
+</script>
+
+
+</html>

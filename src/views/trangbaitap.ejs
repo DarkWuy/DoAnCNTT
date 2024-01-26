@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/trangbaitap.css">
+    <title>Bài Tập</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <%- include('menu') %>
+    <div class="container">
+        <div class="left-column">
+            <%- include('TrangBaiTap/TrangLe') %>
+        </div>
+        <div id="tracnghiem" class="right-column-tracnghiem" style="display: none;" >
+            <%- include('TrangBaiTap/tracnghiem') %>
+        </div>
+        <div id="nghe" class="right-column-nghe" style="display:block;">
+            <%- include('TrangBaiTap/nghe') %>
+        </div>
+        
+        <div id="viet" class="right-column-viet" style="display:none;">
+            <%- include('TrangBaiTap/viet') %>
+        </div>
+       
+    </div>
+        <script>
+
+            function tracnghiem(){
+                document.getElementById("tracnghiem").style.display="block";
+                document.getElementById("nghe").style.display="none";
+                document.getElementById("viet").style.display="none";
+            }
+            function nghe(){
+                document.getElementById("nghe").style.display="block";
+                document.getElementById("tracnghiem").style.display="none";
+                document.getElementById("viet").style.display="none";
+            }
+            function viet(){
+                document.getElementById("nghe").style.display="none";
+                document.getElementById("tracnghiem").style.display="none";
+                document.getElementById("viet").style.display="block";
+            }
+
+        </script>
+</body>
+</html>

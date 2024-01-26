@@ -1,0 +1,219 @@
+html, body {
+    height: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    background-color: rgb(226, 214, 199);
+}
+
+.thanhle{
+    border-left: 1px solid black;
+    height: 20%;
+}
+hr{
+    border-width: 2px;
+    border-color: black;
+    width: 100%;
+    margin: 0;
+
+}
+.duong-doc{
+
+    border-left: 4px solid black ;
+    height: 50%;
+    position: absolute;
+    left: 50%;
+    margin: 0;
+}
+#Home {
+    /* Đảm bảo rằng div cha không ảnh hưởng đến kích thước của ảnh */
+    width: 100%;
+    height: 100%;
+}
+.Imagehome{
+    image-rendering: pixelated;
+    width:100%;
+    height:80%;
+}
+#Study{
+    padding-top: 50px;
+
+}
+.Home-Main{
+    display: flex;
+    justify-content: center;
+}
+.Home-Main img:hover{
+    opacity: 0.8;
+
+}
+.Home-Main-Left, .Home-Main-Right{
+    flex: 1;
+    text-align: center;
+
+}
+ .Home-Main-Right a{
+    color: #000;
+    font-weight: bold;
+    font-size: larger;
+}
+.Home-Main-Left a{
+    color: #000;
+    font-weight: bold;
+    font-size: larger;
+}
+
+
+button[type="submit"] {
+    background-color: #e7b357;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+.thanh-cuoi{
+    width:100%;
+    border: 3px solid #000;
+    position: absolute;
+    margin-top: 5%;
+}
+.last{
+    display: flex;
+    justify-content: space-around;
+}
+
+.content,
+.additional-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+}
+.footer-bar {
+    background-color: rgb(237, 231, 223); 
+    color: black; 
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    display: flex; 
+    justify-content: space-between; 
+    height: 120px;
+    position: fixed;
+    padding-left: 26px;
+    padding-right: 26px;
+} 
+.login-register{
+    padding-top: 3%;
+    display: flex;
+    flex-direction: column;
+  align-items: center;
+
+
+}
+.login-register a{
+    text-decoration: none; 
+    font-style: italic; 
+    text-decoration: underline; 
+    padding-left: 30%;
+}
+.login-register a:hover{
+
+    font-weight: bold; 
+}
+
+.dn #dnhap{
+    position: absolute; 
+    top: 33%; 
+    left: 34%;
+    font-size: 24px;
+    color: rgb(142, 142, 6) ;
+    transition: transform 0.2s ease; 
+    animation: continuousScale 0.5s infinite alternate; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+   text-decoration: none;
+}
+.dn #dki{
+    position: absolute; 
+    top: 40%; 
+    left: 35%;
+    font-size: 24px; 
+    color: rgb(142, 142, 6) ; 
+    transition: transform 0.2s ease; 
+    animation: continuousScale 0.5s infinite alternate; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    text-decoration: none;
+} */
+.dn :hover{
+    transform: scale(1.1); /* Phóng to phần tử khi đưa chuột vào */
+}
+@keyframes continuousScale {
+    0% {
+        transform: scale(1); /* Kích thước ban đầu */
+    }
+    100% {
+        transform: scale(1.1); /* Phóng to 1.1 lần kích thước ban đầu */
+    }
+}
+
+
+
+/* Cấu hình cho trang bài học */
+/* .loaibt a{
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px ;
+    color: black;
+    margin-left: 20px;
+    background-color: transparent;
+  
+}
+#khungbaihoc{
+    background-color: #f0f0f0;
+    height: 100%;
+    width: 20%;
+    position: absolute;
+    top: 63px;
+}
+
+.loaibt:hover{
+    background-color: #ccc;
+} */
+
+/* .submenu a{
+    margin-left: 50px;
+    display: flex;
+}
+#trangbaihoc
+{
+  
+   display: flex; 
+   position: absolute;
+   left: 700px;
+   top:0;
+   width: 200px;
+}
+#tieude{
+    width: 500px;
+}
+
+#tuvung{
+    position: absolute;
+    margin-left:10px ;
+
+} */
+
+    
+
+
+
+
+
+
+ 

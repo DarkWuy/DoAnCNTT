@@ -1,0 +1,48 @@
+h1{
+    text-align: center;
+}
+
+.tuvung{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+p{
+    display: block;
+    padding-top: 20px;
+    line-height: 2;
+}
+hr{
+    border: 2px solid green;
+   
+}
+table
+{
+    text-align: left;
+  
+}
+li{
+    font-weight: normal;
+    padding-top: 20px;
+}
+
+.cauhoi{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.dochieu {
+    display: flex;
+}
+.left-column {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid #ccc; /* Đường viền ngăn cách ngang */
+    border-left: 1px solid #ccc; /* Đường viền ngăn cách dọc */
+}
+
+.right-column {
+    flex: 1;
+    padding-left: 20px;
+}

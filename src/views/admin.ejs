@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/styles/admin.css">
+   
+    <style>
+        /* admin.css */
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: auto;
+
+        }
+
+        header {
+            background-color: rgb(226, 214, 199);
+            color: rgb(11, 10, 9);
+            padding: 10px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            /* position: fixed; */
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <a href="/dangxuat">Logout</a>
+    </header>
+
+    <main>
+        <h2>Danh sách người dùng</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Họ và tên</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Mật khẩu</th>
+                    <th>Ngày sinh</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <th>Giới tính</th>
+                    <th>Actions</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr data-id="<%= user.id %>">
+                        <td><%= user.HoTen %></td>
+                        <td><%= user.TenDangNhap %></td>
+                        <td><%= user.MatKhau %></td>
+                        <td><%= user.NgaySinhFormatted %></td>
+                        <td><%= user.Email %></td>
+                        <td><%= user.Sdt %></td>
+                        <td><%= user.DiaChi %></td>
+                        <td><%= user.GioiTinh %></td>
+                      
+                        <td>
+                            <button onclick="deleteUser('<%= user.id %>')">Xóa</button>
+                            <button onclick="updateUser('<%= user.id %>')">Sửa</button>
+                              <!-- Hidden form for updating user -->
+                              <form id="updateForm_<%= user.id %>" style="display: none;">
+                                <input type="text" id="updatedHoTen_<%= user.id %>" placeholder="Họ và tên mới">
+                                <input type="text" id="updatedTenDangNhap_<%= user.id %>" placeholder="Tên đăng nhập mới">
+                                <input type="text" id="updatedMatKhau_<%= user.id %>" placeholder="Mật khẩu mới">
+                                <input type="text" id="updatedNgaySinh_<%= user.id %>" placeholder="Ngày sinh mới">
+                                <input type="text" id="updatedEmail_<%= user.id %>" placeholder="Email mới">
+                                <input type="text" id="updatedSdt_<%= user.id %>" placeholder="Số điện thoại mới">
+                                <input type="text" id="updatedDiaChi_<%= user.id %>" placeholder="Địa chỉ mới">
+                                <input type="text" id="updatedGioiTinh_<%= user.id %>" placeholder="Giới tính mới">
+                    
+                                <button onclick="submitUpdate('<%= user.id %>')">Lưu</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+
+
+        <h2>Danh sách làm bài tập trắc nghiệm</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên đăng nhập</th>
+                    <th>Tổng số câu</th>
+                    <th>Số câu đúng</th>
+                    <th>Ngày làm</th>
+                 
+                </tr>
+            </thead>
+            <tbody>
+                <% users1.forEach(user => { %>
+                    <tr>
+                        <td><%= user.username %></td>
+                        <td><%= user.NumberOfQuestions %></td>
+                        <td><%= user.CorrectAnswers %></td>
+                        <td><%= user.NgaySinhFormatted %></td>      
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <h2>Danh sách làm bài tập nghe</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tên đăng nhập</th>
+                    <th>Tổng số câu</th>
+                    <th>Số câu đúng</th>
+                    <th>Ngày làm</th>
+                 
+                </tr>
+            </thead>
+            <tbody>
+                <% users2.forEach(user => { %>
+                    <tr>
+                        <td><%= user.username %></td>
+                        <td><%= user.NumberOfQuestions %></td>
+                        <td><%= user.CorrectAnswers %></td>
+                        <td><%= user.NgaySinhFormatted %></td>      
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+    </main>
+
+
+    <footer>
+        <p>&copy; 2023 Admin Dashboard</p>
+    </footer>
+    
+    <script>
+     function deleteUser(userId) {
+    if (confirm("Bạn có chắc muốn xóa người dùng này không?")) {
+        fetch('/deleteUser', {
+            method: 'POST',
+                body: JSON.stringify({userId}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+        })
+        .then(response => response.json())
+        .then(data => {
+            confirm(data.message);
+            window.location="/admin";
+        })
+        .catch(error => console.error('Lỗi:', error));
+    }
+}
+
+function updateUser(userId) {
+            // Hide all update forms first
+            document.querySelectorAll('form[id^="updateForm_"]').forEach(form => {
+                form.style.display = 'none';
+            });
+
+            // Show the update form for the selected user
+            const updateForm = document.getElementById(`updateForm_${userId}`);
+            updateForm.style.display = 'block';
+            
+            // Get user information from the table
+            const userRow = document.querySelector(`tr[data-id="${userId}"]`);
+            const hoTen = userRow.cells[0].textContent;
+            const tenDangNhap = userRow.cells[1].textContent;
+            const matkhau = userRow.cells[2].textContent;
+            const ngaySinh = userRow.cells[3].textContent;
+            const email = userRow.cells[4].textContent;
+            const sdt = userRow.cells[5].textContent;
+            const diaChi = userRow.cells[6].textContent;
+            const gioiTinh = userRow.cells[7].textContent;
+
+            // Fill in the update form with user information
+            document.getElementById(`updatedHoTen_${userId}`).value = hoTen;
+            document.getElementById(`updatedTenDangNhap_${userId}`).value = tenDangNhap;
+            document.getElementById(`updatedMatKhau_${userId}`).value = matkhau;
+            document.getElementById(`updatedNgaySinh_${userId}`).value = ngaySinh;
+            document.getElementById(`updatedEmail_${userId}`).value = email;
+            document.getElementById(`updatedSdt_${userId}`).value = sdt;
+            document.getElementById(`updatedDiaChi_${userId}`).value = diaChi;
+            document.getElementById(`updatedGioiTinh_${userId}`).value = gioiTinh;
+        }
+
+        function submitUpdate(userId) {
+            // Get updated information from the form
+            const updatedHoTen = document.getElementById(`updatedHoTen_${userId}`).value;
+            const updatedTenDangNhap = document.getElementById(`updatedTenDangNhap_${userId}`).value;
+            const updatedMatKhau = document.getElementById(`updatedMatKhau_${userId}`).value;
+            const updatedNgaySinh = document.getElementById(`updatedNgaySinh_${userId}`).value;
+            const updatedEmail = document.getElementById(`updatedEmail_${userId}`).value;
+            const updatedSdt = document.getElementById(`updatedSdt_${userId}`).value;
+            const updatedDiaChi = document.getElementById(`updatedDiaChi_${userId}`).value;
+            const updatedGioiTinh = document.getElementById(`updatedGioiTinh_${userId}`).value;
+
+            // Perform the update request
+            fetch('/updateUser', {
+                method: 'POST',
+                body: JSON.stringify({
+                    userId,
+                    updatedHoTen,
+                    updatedTenDangNhap,
+                    updatedMatKhau,
+                    updatedNgaySinh,
+                    updatedEmail,
+                    updatedSdt,
+                    updatedDiaChi,
+                    updatedGioiTinh
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    confirm(data.message);
+                    window.location = "/admin";
+                })
+                .catch(error => console.error('Lỗi:', error));
+        }
+
+    </script>
+    
+</body>
+</html>

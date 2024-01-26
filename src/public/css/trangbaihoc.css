@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+}
+
+.container {
+    display: flex;
+    margin-top: 70px;
+}
+
+.left-column {
+    width: 19%; 
+    background-color: rgb(226, 214, 199);
+    position: fixed;
+    height: 100vh; 
+    overflow: auto;
+    border-right: 2px solid #ccc;
+}
+
+.right-column-Unit1,
+.right-column-Unit2,
+.right-column-Unit3,
+.right-column-Unit4 {
+    margin-top: 0px;
+    flex: 60%; 
+    overflow: auto;
+    margin-left: 22%;
+    margin-right: 3%;
+    
+}

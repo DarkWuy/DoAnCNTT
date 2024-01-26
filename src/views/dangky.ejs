@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/dangky.css">
+    <title>Đăng ký</title>
+</head>
+<body onload="formatDateInput()">    
+    <div class ="dangky">
+                    <h2>ĐĂNG KÝ</h2>
+                  
+                     <form id="formdangky" action="/" method="post"  onsubmit="return validateForm()">
+                        <div class="form-group">
+                            <label style="color: black;" for="hoten">Họ và tên:</label>
+                            <input type="text" id="hoten" name="hoten"  required>
+                        </div>        
+                            <div class="form-group">
+                                <label style="color: black;" for="ngaysinh">Ngày sinh:</label>
+                                <input type="date" id="ngaysinh" name="ngaysinh"  required>
+                            </div>              
+                                <div class="form-group">
+                                    <label style="color: black;" for="sdt">Số điện thoại:</label>
+                                    <input type="text" id="sdt" name="sdt"  required>
+                                </div>
+                                    <div class="form-group">
+                                        <label style="color: black;" for="email">Email:</label>
+                                        <input type="text" id="email" name="email">
+                                        <span id="email-error" style="color: red;"></span>
+                                    </div>
+                                    <div class="form-group" style="padding-bottom: 30px;">
+                                        <label style="color: black;" for="gt">Giới tính: </label><br>
+                                        <label style="color: black;" for="gtnam"> 
+                                            <input style="margin-left: 300px;" type="radio" id="gtnam" name="gioitinh" value="Nam" checked>Nam
+                                        </label>
+                                        <label style="color: black;" for="gtnu"> 
+                                            <input  required style="margin-top: 20px; margin-left: 50px;" type="radio" id="gtnu" name="gioitinh" value="Nữ">Nữ
+                                        </label>
+                                    </div>
+                                    <div class="form-group" >
+                                        <label style="color: black;" for="diachi">Địa chỉ:</label>
+                                        <input type="text" id="diachi" name="diachi"  required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="color: black;" for="tendangnhap">Tên đăng nhập:</label>
+                                        <input type="text" id="tendangnhap" name="tendangnhap"  required>
+                                        <span id="name-error" style="color: red;"></span>
+                                    </div>
+                                        <div class="form-group">
+                                            <label for="password">Mật khẩu:</label>
+                                            <input type="password" id="mk" name="mk" required>
+                                        </div>
+
+                                            <div class="form-group">
+                                                <label for="confirmPassword">Xác nhận mật khẩu:</label>
+                                                <input type="password" id="xnmk" name="xnmk" required>
+                                                <span id="pass-error" style="color: red;"></span>
+                                            </div>
+
+                        <button id="ok" type="submit">Đăng Ký</button>
+                        <h4>Bạn chưa đã có tài khoản?<span style="margin-left: 20px;"><a href="/dangnhap">Đăng nhập ngay</a></span></h4>
+                    </form>
+
+                    <div id="registration-success-message" style="display: none;">
+                        Đăng ký thành công!
+                    </div>            
+    </div>
+    <script>
+        function formatDateInput() {
+            var ngaysinhInput = document.getElementById('ngaysinh');
+            var ngaysinhValue = ngaysinhInput.value;
+            if (ngaysinhValue) {
+                var parts = ngaysinhValue.split('-');
+                var formattedDate = parts[2] + '-' + parts[1] + '-' + parts[0];
+                ngaysinhInput.value = formattedDate;
+            }
+        }
+        function validateForm() {
+    // Kiểm tra email
+    // Kiểm tra mật khẩu và xác nhận mật khẩu
+    var passwordInput = document.getElementById('mk');
+    var confirmPasswordInput = document.getElementById('xnmk');
+    var emailInput = document.getElementById('email');
+    var emailValue = emailInput.value;
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailValue)) {
+        document.getElementById("email-error").textContent = "Vui lòng nhập một địa chỉ email hợp lệ!";
+        return false; 
+    } else {
+        document.getElementById("email-error").textContent = "";
+    }
+
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        document.getElementById("pass-error").textContent = "Xác nhận mật khẩu chưa đúng!";
+        return false;
+    } else {
+        document.getElementById("pass-error").textContent = "";
+    }
+
+    return true;
+}
+
+  document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('form').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                if(validateForm()===true){
+                  const formData = new FormData(this);
+                try {
+                    const response = await fetch('/', {
+                        method: 'POST',
+                        body: new URLSearchParams(new FormData(this)),
+                    
+                    });
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const data = await response.json();
+                    if (data.loidangnhap) {
+                        document.getElementById("name-error").textContent = data.loidangnhap;
+                    }
+                     else {
+                        document.getElementById("name-error").textContent = "";
+                        alert("Đăng ký thành công");
+                        window.location = "/dangnhap";
+                    }
+                } catch (error) {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    alert('Đã xảy ra lỗi khi xử lý yêu cầu.');
+                }
+            }
+            });
+        });
+    
+    </script>
+</body>
+</html>
